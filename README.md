@@ -16,3 +16,27 @@ How this deployment works:
 pip install beautifulsoup4
 pip install beautifulsoup4 requests
 ```
+
+## Usage
+
+Automated Extraction (Windows Task Scheduler)
+
+To ensure **OPERATION RENAISSANCE** runs automatically every morning, you can configure Windows Task Scheduler to act as the handler for the script. 
+
+**Note:** Before automating, run the script manually at least once so you can establish your local drop zone configuration (`renaissance_config.json`).
+
+1. Open the Windows Start Menu, type **Task Scheduler**, and hit Enter.
+2. In the right-hand "Actions" pane, click **Create Basic Task...**
+3. **Name:** `OPERATION RENAISSANCE - Daily Extraction` (or whatever you prefer) and click **Next**.
+4. **Trigger:** Select **Daily** and set your preferred file creation time (e.g., `6:00 AM`).
+5. **Action:** Select **Start a program**.
+6. **Program/Script Configuration (Crucial Step):**
+   - **Program/script:** Type `python` (or see the Ghost Mode tip below).
+   - **Add arguments:** Type the name of your script (e.g., `renaissance.py`).
+   - **Start in:** Paste the **absolute path** to the folder where your script and config file live (e.g., `C:\Users\YourName\Documents\operation-renaissance`). *Do not put quotes around this path.*
+7. Click **Next**, review your parameters, and click **Finish**.
+
+Your system will now automatically run the exfiltration protocol every morning, dropping the random art piece directly into your Obsidian vault.
+
+> **Tip: "Ghost Mode" (Silent Execution)**
+> By default, Task Scheduler might briefly flash a black Python terminal window on your screen when it runs. To make the execution completely silent and invisible, change the **Program/script** box in Step 6 from `python` to `pythonw`. The 'w' tells Windows to run the script in the background without launching a console UI.
