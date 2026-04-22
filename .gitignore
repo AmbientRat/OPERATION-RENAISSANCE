@@ -1,0 +1,11 @@
+# Local Configuration
+renaissance_config.json
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
